@@ -1,0 +1,68 @@
+#include <iostream>
+#include <string>
+unsigned short HEIGHT = 0;
+
+unsigned short ReadPersonAge() {
+	unsigned short age;
+	std::cin >> age;
+	return age;
+}
+
+std::string ReadPersonName() {
+	std::string name;
+	std::cin >> name;
+	return name;
+}
+
+void ReadPersonHeight() {
+	std::cin >> HEIGHT;
+}
+
+void ReadPersonWeight(unsigned short& weight) {
+	std::cin >> weight;
+}
+
+void ReadPersonSalary(double* salary) {
+	std::cin >> *salary;
+}
+
+void ReadPersonData(std::string& name, unsigned short& age, double& salary) {
+	name = ReadPersonName();
+	age = ReadPersonAge();
+	ReadPersonSalary(&salary);
+}
+
+void ReadPersonData(std::string& name, unsigned short& age, unsigned short& height, unsigned short& weight) {
+	name = ReadPersonName();
+	age = ReadPersonAge();
+	ReadPersonHeight(); height = HEIGHT;
+	ReadPersonWeight(weight);
+}
+
+void WritePersonData(unsigned short age, const std::string& name, const std::string& height, const std::string& weight, const std::string& salary) {
+	std::cout << std::endl << "Age: " << age << std::endl;
+	std::cout << "Name: " << name << std::endl;
+	std::cout << "Height: " << height << std::endl;
+	std::cout << "Weight: " << weight << std::endl;
+	std::cout << "Salary: " << salary << std::endl << std::endl;
+}
+
+int main() {
+	
+	std::string name1;
+	unsigned short age1;
+	double salary1;
+	
+	ReadPersonData(name1, age1, salary1);
+	WritePersonData(age1, name1, "", "", std::to_string(salary1));
+	
+	std::string name2;
+	unsigned short age2;
+	unsigned short height2;
+	unsigned short weight2;
+
+	ReadPersonData(name2, age2, height2, weight2);
+	WritePersonData(age2, name2, std::to_string(height2), std::to_string(weight2), "");
+
+	return 0;
+}
